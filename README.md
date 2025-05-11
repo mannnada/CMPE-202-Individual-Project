@@ -65,7 +65,6 @@ The application is designed to be extensible for supporting additional log types
 
 - Handles invalid log entries gracefully by ignoring them
 
-## Project Structure
 LogParserApplication/
 ├── .idea/                   # IntelliJ IDEA configuration files
 ├── src/
@@ -119,7 +118,6 @@ LogParserApplication/
 ├── .gitignore               # Git ignore file
 ├── pom.xml                  # Maven configuration file
 ├── README.md                # This file
-
 ```
 
 ## Getting Started
