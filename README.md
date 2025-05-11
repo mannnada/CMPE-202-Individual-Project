@@ -67,55 +67,58 @@ The application is designed to be extensible for supporting additional log types
 
 ## Project Structure
 LogParserApplication/
+├── .idea/                   # IntelliJ IDEA configuration files
 ├── src/
 │   ├── main/
 │   │   ├── java/
-│   │   │   ├── com/
-│   │   │   │   ├── logparser/
-│   │   │   │   │   ├── Main.java
-│   │   │   │   │   ├── model/
-│   │   │   │   │   │   ├── LogEntry.java
-│   │   │   │   │   │   ├── APMLogEntry.java
-│   │   │   │   │   │   ├── ApplicationLogEntry.java
-│   │   │   │   │   │   ├── RequestLogEntry.java
-│   │   │   │   │   ├── parser/
-│   │   │   │   │   │   ├── LogParser.java
-│   │   │   │   │   │   ├── APMLogParser.java
-│   │   │   │   │   │   ├── ApplicationLogParser.java
-│   │   │   │   │   │   ├── RequestLogParser.java
-│   │   │   │   │   │   ├── LogParserFactory.java
-│   │   │   │   │   ├── handler/
-│   │   │   │   │   │   ├── LogHandler.java
-│   │   │   │   │   │   ├── APMLogHandler.java
-│   │   │   │   │   │   ├── ApplicationLogHandler.java
-│   │   │   │   │   │   ├── RequestLogHandler.java
-│   │   │   │   │   ├── aggregator/
-│   │   │   │   │   │   ├── LogAggregator.java
-│   │   │   │   │   │   ├── APMLogAggregator.java
-│   │   │   │   │   │   ├── ApplicationLogAggregator.java
-│   │   │   │   │   │   ├── RequestLogAggregator.java
-│   │   │   │   │   ├── output/
-│   │   │   │   │   │   ├── JsonOutputWriter.java
-│   │   │   │   │   ├── util/
-│   │   │   │   │   │   ├── LogProcessor.java
-│   │   │   │   │   │   ├── Utils.java
+│   │   │   ├── org/
+│   │   │   │   ├── example/
+│   │   │   │   │   ├── Main.java              # Entry point of the application
+│   │   │   │   │   ├── model/                 # Domain model classes
+│   │   │   │   │   │   ├── LogEntry.java      # Base class for all log entries
+│   │   │   │   │   │   ├── APMLogEntry.java   # APM log entry model
+│   │   │   │   │   │   ├── ApplicationLogEntry.java  # Application log entry model
+│   │   │   │   │   │   ├── RequestLogEntry.java      # Request log entry model
+│   │   │   │   │   ├── parser/                # Strategy pattern implementation
+│   │   │   │   │   │   ├── LogParser.java     # Parser interface
+│   │   │   │   │   │   ├── APMLogParser.java  # APM log parser
+│   │   │   │   │   │   ├── ApplicationLogParser.java # Application log parser
+│   │   │   │   │   │   ├── RequestLogParser.java     # Request log parser
+│   │   │   │   │   │   ├── LogParserFactory.java     # Factory for parsers
+│   │   │   │   │   ├── handler/               # Chain of Responsibility implementation
+│   │   │   │   │   │   ├── LogHandler.java    # Base handler class
+│   │   │   │   │   │   ├── APMLogHandler.java # APM log handler
+│   │   │   │   │   │   ├── ApplicationLogHandler.java # Application log handler
+│   │   │   │   │   │   ├── RequestLogHandler.java     # Request log handler
+│   │   │   │   │   ├── aggregator/           # Log aggregation logic
+│   │   │   │   │   │   ├── LogAggregator.java # Aggregator interface
+│   │   │   │   │   │   ├── APMLogAggregator.java     # APM log aggregator
+│   │   │   │   │   │   ├── ApplicationLogAggregator.java # Application log aggregator
+│   │   │   │   │   │   ├── RequestLogAggregator.java     # Request log aggregator
+│   │   │   │   │   ├── output/               # Output generation
+│   │   │   │   │   │   ├── JsonOutputWriter.java     # JSON file writer
+│   │   │   │   │   ├── util/                 # Utility classes
+│   │   │   │   │   │   ├── LogProcessor.java # Main log processing logic
+│   │   │   │   │   │   ├── Utils.java        # Utility methods
+│   │   ├── resources/
+│   │   │   ├── input.txt                     # Sample log file
 │   ├── test/
 │   │   ├── java/
-│   │   │   ├── com/
-│   │   │   │   ├── logparser/
-│   │   │   │   │   ├── parser/
+│   │   │   ├── org/
+│   │   │   │   ├── example/
+│   │   │   │   │   ├── LogProcessorTest.java # Tests for LogProcessor
+│   │   │   │   │   ├── parser/               # Parser tests
 │   │   │   │   │   │   ├── APMLogParserTest.java
 │   │   │   │   │   │   ├── ApplicationLogParserTest.java
 │   │   │   │   │   │   ├── RequestLogParserTest.java
-│   │   │   │   │   ├── aggregator/
+│   │   │   │   │   ├── aggregator/           # Aggregator tests
 │   │   │   │   │   │   ├── APMLogAggregatorTest.java
 │   │   │   │   │   │   ├── ApplicationLogAggregatorTest.java
 │   │   │   │   │   │   ├── RequestLogAggregatorTest.java
-│   │   │   │   │   ├── LogProcessorTest.java
-│   ├── resources/
-│   │   ├── input.txt
-├── pom.xml
-```
+├── target/                  # Compiled output
+├── .gitignore               # Git ignore file
+├── pom.xml                  # Maven configuration file
+├── README.md                # This file
 
 ```
 
