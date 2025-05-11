@@ -40,9 +40,17 @@ The application is designed to be extensible for supporting additional log types
 - Enables adding new log types without modifying existing code
 - Makes it easy to test each processor in isolation
 
-### 3. Command Pattern
+### 3. Chain of Responsibility Pattern
 
-**Purpose**: Encapsulate aggregation operations.
+- **Purpose**: Pass requests along a chain of handlers, with each handler deciding to process or pass to the next
+- **Implementation**: Each handler in the chain is responsible for a specific log type
+- **Key Classes**:
+  - `LogHandler` (Abstract)
+  - `APMLogHandler`
+  - `ApplicationLogHandler`
+  - `RequestLogHandler`
+- **Benefits**: Provides flexibility in processing different log formats and allows dynamic configuration of the processing chain
+
 
 **Implementation**: Each `LogProcessor` implementation contains its own aggregation logic.
 
