@@ -66,44 +66,57 @@ The application is designed to be extensible for supporting additional log types
 - Handles invalid log entries gracefully by ignoring them
 
 ## Project Structure
-
-```
-log-parser-app/
-│
-├── pom.xml                           # Maven configuration file
-│
+LogParserApplication/
 ├── src/
 │   ├── main/
 │   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── logparser/
-│   │   │           ├── LogType.java              # Enum of log types
-│   │   │           ├── LogEntry.java             # Base interface for log entries
-│   │   │           ├── APMLogEntry.java          # APM log entry implementation
-│   │   │           ├── ApplicationLogEntry.java  # Application log entry implementation
-│   │   │           ├── RequestLogEntry.java      # Request log entry implementation
-│   │   │           ├── LogEntryFactory.java      # Factory for creating log entries
-│   │   │           ├── LogProcessor.java         # Interface for log processors
-│   │   │           ├── APMLogProcessor.java      # APM log processor implementation
-│   │   │           ├── ApplicationLogProcessor.java # Application log processor implementation
-│   │   │           ├── RequestLogProcessor.java  # Request log processor implementation
-│   │   │           └── LogParserApp.java         # Main application class
-│   │   │
-│   │   └── resources/                # For configuration files (if needed)
-│   │
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── logparser/
-│                   └── LogParserAppTest.java  # JUnit tests
-│
-├── sample/
-│   └── input.txt                     # Sample input file for testing
-│
-└── output/                           # Directory for output files
-    ├── apm.json                      # Output file for APM logs
-    ├── application.json              # Output file for Application logs
-    └── request.json                  # Output file for Request logs
+│   │   │   ├── com/
+│   │   │   │   ├── logparser/
+│   │   │   │   │   ├── Main.java
+│   │   │   │   │   ├── model/
+│   │   │   │   │   │   ├── LogEntry.java
+│   │   │   │   │   │   ├── APMLogEntry.java
+│   │   │   │   │   │   ├── ApplicationLogEntry.java
+│   │   │   │   │   │   ├── RequestLogEntry.java
+│   │   │   │   │   ├── parser/
+│   │   │   │   │   │   ├── LogParser.java
+│   │   │   │   │   │   ├── APMLogParser.java
+│   │   │   │   │   │   ├── ApplicationLogParser.java
+│   │   │   │   │   │   ├── RequestLogParser.java
+│   │   │   │   │   │   ├── LogParserFactory.java
+│   │   │   │   │   ├── handler/
+│   │   │   │   │   │   ├── LogHandler.java
+│   │   │   │   │   │   ├── APMLogHandler.java
+│   │   │   │   │   │   ├── ApplicationLogHandler.java
+│   │   │   │   │   │   ├── RequestLogHandler.java
+│   │   │   │   │   ├── aggregator/
+│   │   │   │   │   │   ├── LogAggregator.java
+│   │   │   │   │   │   ├── APMLogAggregator.java
+│   │   │   │   │   │   ├── ApplicationLogAggregator.java
+│   │   │   │   │   │   ├── RequestLogAggregator.java
+│   │   │   │   │   ├── output/
+│   │   │   │   │   │   ├── JsonOutputWriter.java
+│   │   │   │   │   ├── util/
+│   │   │   │   │   │   ├── LogProcessor.java
+│   │   │   │   │   │   ├── Utils.java
+│   ├── test/
+│   │   ├── java/
+│   │   │   ├── com/
+│   │   │   │   ├── logparser/
+│   │   │   │   │   ├── parser/
+│   │   │   │   │   │   ├── APMLogParserTest.java
+│   │   │   │   │   │   ├── ApplicationLogParserTest.java
+│   │   │   │   │   │   ├── RequestLogParserTest.java
+│   │   │   │   │   ├── aggregator/
+│   │   │   │   │   │   ├── APMLogAggregatorTest.java
+│   │   │   │   │   │   ├── ApplicationLogAggregatorTest.java
+│   │   │   │   │   │   ├── RequestLogAggregatorTest.java
+│   │   │   │   │   ├── LogProcessorTest.java
+│   ├── resources/
+│   │   ├── input.txt
+├── pom.xml
+```
+
 ```
 
 ## Getting Started
